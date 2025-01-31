@@ -1,0 +1,502 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Listing Export API",
+    "description" : "Retrieve listings in REAXML format",
+    "termsOfService" : "",
+    "version" : "1.0.0"
+  },
+  "externalDocs" : {
+    "description" : "",
+    "url" : ""
+  },
+  "servers" : [ {
+    "url" : "https://api.realestate.com.au/listing/export",
+    "description" : "Production API",
+    "variables" : { }
+  }, {
+    "url" : "https://rea-poc-vkct.apiwiz.io/agency",
+    "description" : "",
+    "variables" : { }
+  }, {
+    "url" : "https://rea-poc-vkct.apiwiz.io/agency1",
+    "description" : "dev",
+    "variables" : { }
+  }, {
+    "url" : "https://rea-poc-vkct.apiwiz.io/agency2",
+    "description" : "test",
+    "variables" : { }
+  } ],
+  "paths" : {
+    "/listing/v1/export" : {
+      "get" : {
+        "tags" : [ "listings-export" ],
+        "summary" : "Export all listings filtered based on query params",
+        "description" : "Export listings",
+        "operationId" : "listings-export",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/pageParam"
+        }, {
+          "$ref" : "#/components/parameters/listingTypesParam"
+        }, {
+          "$ref" : "#/components/parameters/statusParam"
+        }, {
+          "$ref" : "#/components/parameters/sinceParam"
+        }, {
+          "$ref" : "#/components/parameters/pageSizeParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/200"
+          },
+          "400" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/400"
+          },
+          "401" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/401"
+          },
+          "403" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/403"
+          },
+          "404" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/404"
+          },
+          "405" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/405"
+          },
+          "429" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/429"
+          },
+          "500" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/500"
+          }
+        },
+        "callbacks" : { },
+        "deprecated" : false,
+        "security" : [ ],
+        "servers" : [ ]
+      },
+      "servers" : [ {
+        "url" : "https://api.realestate.com.au/listing/export",
+        "description" : "Production API",
+        "variables" : { }
+      }, {
+        "url" : "https://rea-poc-vkct.apiwiz.io/agency",
+        "description" : "",
+        "variables" : { }
+      } ],
+      "parameters" : [ ],
+      "extensions" : {
+        "x-description" : ""
+      }
+    },
+    "/v2/listing/v1/export" : {
+      "get" : {
+        "tags" : [ "listings-export" ],
+        "summary" : "Export all listings by Agency",
+        "description" : "",
+        "operationId" : "listings-export-agency",
+        "parameters" : [ {
+          "name" : "agency_id",
+          "in" : "query",
+          "description" : "The agency to export listings for",
+          "required" : true,
+          "style" : "FORM",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "ABCXYZ"
+        }, {
+          "$ref" : "#/components/parameters/pageParam"
+        }, {
+          "$ref" : "#/components/parameters/listingTypesParam"
+        }, {
+          "$ref" : "#/components/parameters/statusParam"
+        }, {
+          "$ref" : "#/components/parameters/sinceParam"
+        }, {
+          "$ref" : "#/components/parameters/pageSizeParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/200"
+          },
+          "400" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/400"
+          },
+          "401" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/401"
+          },
+          "403" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/403"
+          },
+          "404" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/404"
+          },
+          "405" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/405"
+          },
+          "429" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/429"
+          },
+          "500" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/500"
+          }
+        },
+        "callbacks" : { },
+        "deprecated" : false,
+        "security" : [ {
+          "ListingsExport" : [ "listing:listings:export" ]
+        } ],
+        "servers" : [ ]
+      },
+      "servers" : [ {
+        "url" : "https://api.realestate.com.au/listing/export",
+        "description" : "Production API",
+        "variables" : { }
+      }, {
+        "url" : "https://rea-poc-vkct.apiwiz.io/agency1",
+        "description" : "dev",
+        "variables" : { }
+      } ],
+      "parameters" : [ ],
+      "extensions" : {
+        "x-description" : ""
+      }
+    },
+    "/v3/listing/v1/export" : {
+      "get" : {
+        "tags" : [ "listings-export" ],
+        "summary" : "Export all listings by ListingID",
+        "description" : "",
+        "operationId" : "listings-export-listing",
+        "parameters" : [ {
+          "name" : "listing_id",
+          "in" : "query",
+          "description" : "The listing to export",
+          "required" : true,
+          "style" : "FORM",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "000000000"
+        }, {
+          "$ref" : "#/components/parameters/listingTypesParam"
+        }, {
+          "$ref" : "#/components/parameters/statusParam"
+        }, {
+          "$ref" : "#/components/parameters/sinceParam"
+        } ],
+        "responses" : {
+          "200" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/200"
+          },
+          "400" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/400"
+          },
+          "401" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/401"
+          },
+          "403" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/403"
+          },
+          "404" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/404"
+          },
+          "405" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/405"
+          },
+          "429" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/429"
+          },
+          "500" : {
+            "headers" : { },
+            "$ref" : "#/components/responses/500"
+          }
+        },
+        "callbacks" : { },
+        "deprecated" : false,
+        "security" : [ {
+          "ListingsExport" : [ "listing:listings:export" ]
+        } ],
+        "servers" : [ ]
+      },
+      "servers" : [ {
+        "url" : "https://api.realestate.com.au/listing/export",
+        "description" : "Production API",
+        "variables" : { }
+      }, {
+        "url" : "https://rea-poc-vkct.apiwiz.io/agency2",
+        "description" : "test",
+        "variables" : { }
+      } ],
+      "parameters" : [ ],
+      "extensions" : {
+        "x-description" : ""
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Error" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "detail" : {
+            "type" : "string"
+          },
+          "meta" : {
+            "type" : "object",
+            "properties" : {
+              "transactionId" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "propertyList" : {
+        "type" : "object",
+        "properties" : {
+          "residential" : {
+            "type" : "object",
+            "properties" : {
+              "modTime" : {
+                "type" : "string",
+                "example" : "2020-05-20T10:23:43",
+                "xml" : {
+                  "attribute" : true
+                }
+              },
+              "status" : {
+                "type" : "string",
+                "example" : "sold",
+                "xml" : {
+                  "attribute" : true
+                }
+              },
+              "..." : {
+                "type" : "object"
+              }
+            }
+          }
+        },
+        "description" : "See http://reaxml.realestate.com.au/propertyList.dtd for response structure"
+      }
+    },
+    "responses" : {
+      "200" : {
+        "description" : "OK. Request will return stream of reaxml.",
+        "headers" : {
+          "Transfer-Encoding" : {
+            "description" : "gzip, chunked",
+            "style" : "SIMPLE",
+            "explode" : false,
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "content" : {
+          "application/xml" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/propertyList"
+            }
+          }
+        }
+      },
+      "400" : {
+        "description" : "Bad Request. The request cannot be processed due to a client error. This could be due to:\n  - Specifying agency id and listing id together.\n  - Invalid page size.",
+        "headers" : { },
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "example" : {
+                "status" : "404",
+                "title" : "Bad request",
+                "detail" : "listing_id is invalid",
+                "meta" : {
+                  "transactionId" : "123"
+                }
+              },
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/Error"
+              } ],
+              "anyOf" : [ ],
+              "oneOf" : [ ]
+            }
+          }
+        }
+      },
+      "401" : {
+        "description" : "Unauthorized",
+        "headers" : { }
+      },
+      "403" : {
+        "description" : "Forbidden",
+        "headers" : { },
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "example" : {
+                "status" : "403",
+                "title" : "Forbidden",
+                "detail" : "You are not authorized to access this endpoint",
+                "meta" : { }
+              },
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/Error"
+              } ],
+              "anyOf" : [ ],
+              "oneOf" : [ ]
+            }
+          }
+        }
+      },
+      "404" : {
+        "description" : "Not Found",
+        "headers" : { },
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "example" : {
+                "status" : "404",
+                "title" : "Not found",
+                "detail" : "listing_id 123456789 not found",
+                "meta" : {
+                  "transactionId" : "123"
+                }
+              },
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/Error"
+              } ],
+              "anyOf" : [ ],
+              "oneOf" : [ ]
+            }
+          }
+        }
+      },
+      "405" : {
+        "description" : "Method Not Allowed",
+        "headers" : { }
+      },
+      "429" : {
+        "description" : "Too Many Requests. You have exceeded the maximum number of requests permitted.",
+        "headers" : { }
+      },
+      "500" : {
+        "description" : "Internal Server Error",
+        "headers" : { }
+      }
+    },
+    "parameters" : {
+      "pageParam" : {
+        "name" : "page",
+        "in" : "query",
+        "description" : "The listing Id to start from (for pagination)",
+        "required" : false,
+        "style" : "FORM",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        },
+        "example" : "000000000"
+      },
+      "listingTypesParam" : {
+        "name" : "listing_types",
+        "in" : "query",
+        "description" : "String of comma separated `ListingType` to include",
+        "required" : false,
+        "style" : "FORM",
+        "explode" : true,
+        "schema" : {
+          "type" : "string",
+          "enum" : [ "residential", "rental", "rural", "land", "commercial" ]
+        },
+        "example" : "residential,rural"
+      },
+      "statusParam" : {
+        "name" : "status",
+        "in" : "query",
+        "description" : "String of comma separated `ListingStatus` to include",
+        "required" : false,
+        "style" : "FORM",
+        "explode" : true,
+        "schema" : {
+          "type" : "string",
+          "enum" : [ "current", "offmarket", "sold", "leased" ]
+        },
+        "example" : "current,offmarket"
+      },
+      "sinceParam" : {
+        "name" : "since",
+        "in" : "query",
+        "description" : "ISO8601 formatted datetime that filters based on the modTime of a listing",
+        "required" : false,
+        "style" : "FORM",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        },
+        "example" : "2018-03-20T09:12:28Z"
+      },
+      "pageSizeParam" : {
+        "name" : "page_size",
+        "in" : "query",
+        "description" : "An integer representing the pagination size",
+        "required" : false,
+        "style" : "FORM",
+        "explode" : true,
+        "schema" : {
+          "maximum" : 1000,
+          "type" : "integer"
+        },
+        "example" : "500"
+      }
+    },
+    "securitySchemes" : {
+      "ListingsExport" : {
+        "type" : "OAUTH2",
+        "description" : "The Listing Upload API uses OAuth 2 with the client credentials grant flow.",
+        "flows" : {
+          "clientCredentials" : {
+            "tokenUrl" : "https://api.realestate.com.au/oauth/token",
+            "scopes" : {
+              "listing:listings:export" : "Export listings"
+            }
+          }
+        }
+      }
+    }
+  }
+}
